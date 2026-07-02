@@ -1,0 +1,111 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hate Speech Detector</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"><style>
+
+body{
+margin:0;
+padding:0;
+font-family:'Poppins', sans-serif;
+background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.container{
+background:white;
+padding:45px;
+width:520px;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
+text-align:center;
+}
+
+h1{
+font-size:40px;
+font-weight:700;
+margin-bottom:25px;
+color:#2c5364;
+}
+
+textarea{
+width:90%;
+height:130px;
+border-radius:12px;
+border:2px solid #ddd;
+padding:15px;
+font-size:16px;
+resize:both;
+margin:auto;
+display:block;
+}
+
+textarea:focus{
+border-color:#3a7bd5;
+outline:none;
+}
+
+button{
+margin-top:20px;
+background:linear-gradient(90deg,#3a7bd5,#00d2ff);
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+.clear-btn{
+background:#888;
+margin-left:10px;
+}
+
+.result{
+margin-top:25px;
+font-size:22px;
+font-weight:600;
+}
+
+.safe{
+color:green;
+}
+
+.offensive{
+color:orange;
+}
+
+.hate{
+color:red;
+}
+
+</style></head><body><div class="container"><h1>Hate Speech Detector</h1><form method="POST"><textarea name="tweet" placeholder="Enter text to analyze...">{{ request.form.tweet }}</textarea><br><button type="submit">Run Detection</button>
+
+<button type="button" class="clear-btn" onclick="clearText()">Clear</button>
+
+</form>{% if prediction %}
+
+<div class="result
+{% if 'Safe' in prediction or 'Neither' in prediction %} safe
+{% elif 'Offensive' in prediction %} offensive
+{% else %} hate
+{% endif %}
+">Result: {{ prediction }}
+
+</div>{% endif %}
+
+</div><script>
+
+function clearText(){
+document.querySelector("textarea").value="";
+}
+
+</script></body>
+</html>
