@@ -14,6 +14,17 @@ This project detects hate speech in social media text using Machine Learning and
 - Confusion Matrix Visualization
 - Custom Text Prediction
 
+## 📸 Application Screenshots
+
+### Home Screen
+![Home Screen](images/home.png)
+
+### Input Screen
+![Input Screen](images/input.png)
+
+### Prediction Result
+![Prediction Result](images/prediction.png)
+
 ## 🛠️ Technologies Used
 
 - Python
